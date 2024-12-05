@@ -4,12 +4,13 @@ async function HandelServeHomepage(req, res){
     const {firstType, secondType} = req.body;
 
     let payload = {
-        bannerimg: 'http://localhost:9090/homepageServe/BannerImage.jpg',
+        bannerimg: 'http://192.168.29.202:9090:9090/homepageServe/BannerImage.jpg',
         user: req.user,
     }
 
     const firstProductFind = await productModel.find({Type: firstType});
     const secondProductFind = await productModel.find({Type: secondType});
+    
     if(!firstProductFind){
         payload  = {
             bannerimg: 'http://192.168.29.202:9090/homepageServe/BannerImage.jpg',

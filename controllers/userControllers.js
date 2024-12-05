@@ -111,8 +111,28 @@ async function HandelOtp(req, res){
     }
 }
 
+async function HandelUserUpdate(req, res){
+    const {fullname, phonenumber} = req.    body;
+
+    if(fullname){   
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Fullname: fullname}})
+    }
+    if(phonenumber){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Phonenumber: phonenumber }})
+    }   
+
+    const payload = {
+        user: req.user,
+        message: "success",
+    }
+    const findUser = await UserModel.findOne({Phonenumber: phonenumber});
+    const token = jwtSign(findUser);
+    return res.json(payload);
+}
+
 module.exports = {
     HandelSingup,
     HandelLogin,
-    HandelOtp
+    HandelOtp,
+    HandelUserUpdate
 }
