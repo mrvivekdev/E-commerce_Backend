@@ -17,7 +17,7 @@ async function HandelProductAdd(req, res){
         return res.json({warning: "FullFill"});
     }
 
-    let imageAddreas = `http://192.168.29.202:9090/homepageServe/productImage/${req.file.filename}`
+    let imageAddreas = `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/productImage/${req.file.filename}`
 
     try {
         const productDataSet = await productModel.create({
