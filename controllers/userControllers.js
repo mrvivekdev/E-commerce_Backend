@@ -112,7 +112,16 @@ async function HandelOtp(req, res){
 }
 
 async function HandelUserUpdate(req, res){
-    const {fullname, phonenumber} = req.    body;
+    const { 
+            fullname, 
+            phonenumber, 
+            address, 
+            pincodeNumber, 
+            city, 
+            landmark, 
+            houseNumber, 
+            street
+        } = req.body;
 
     if(fullname){   
         await UserModel.findByIdAndUpdate(req.user._id, { $set: { Fullname: fullname}})
@@ -121,12 +130,35 @@ async function HandelUserUpdate(req, res){
         await UserModel.findByIdAndUpdate(req.user._id, { $set: { Phonenumber: phonenumber }})
     }   
 
+    // Delivery info data update
+    if(address){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Address: address }})
+    }
+    if(pincodeNumber){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Pincode: pincodeNumber }})
+    }
+    if(city){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { City: city }})
+    }
+    if(street){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Street: street }})
+    }
+    if(houseNumber){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { HomeNumber: houseNumber }})
+    }
+    if(landmark){
+        await UserModel.findByIdAndUpdate(req.user._id, { $set: { Landmark: landmark }})
+    }
+
+    const findUser = await UserModel.findOne({_id: req.user._id});
+    const token = jwtSign(findUser);
+
     const payload = {
         user: req.user,
+        cookie: token,
         message: "success",
     }
-    const findUser = await UserModel.findOne({Phonenumber: phonenumber});
-    const token = jwtSign(findUser);
+
     return res.json(payload);
 }
 

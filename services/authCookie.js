@@ -9,7 +9,13 @@ function jwtSign(user){
         _id: user._id,
         fullname: user.Fullname,
         email: user.Email,
-        phonenumber: user.Phonenumber
+        phonenumber: user.Phonenumber,
+        address: user.Address,
+        pincodeNumber: user.Pincode,
+        city: user.City,
+        landmark: user.Landmark,
+        houseNumber: user.HomeNumber,
+        street: user.Street    
     }
 
     try {

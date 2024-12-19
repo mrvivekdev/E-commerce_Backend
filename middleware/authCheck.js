@@ -3,6 +3,7 @@ const {jwtVerify} =  require('../services/authCookie');
 function authCheck(req, res, next){
     const cookieToken = req.cookies.uid;
     const verifyCookie = jwtVerify(cookieToken);
+    
     req.user = verifyCookie;
     next();
 }
