@@ -67,7 +67,7 @@ async function HandelLogin(req, res){
         otpNumber = otpCode;
         console.log(otpNumber);
         const token = jwtSign(checkEmail);
-        // OtpSender(otpNumber, checkEmail.Email);
+        OtpSender(otpNumber, checkEmail.Email);
 
         const frontPayload = {
             transport: 'OtpPage',
