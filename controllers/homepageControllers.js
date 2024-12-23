@@ -4,7 +4,7 @@ async function HandelServeHomepage(req, res){
     const {firstType, secondType} = req.body;
 
     let payload = {
-        bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/BannerImage.jpg`,
+        bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/${process.env.BANNER_IMAGE_NAME}`,
         user: req.user,
     }
 
@@ -13,14 +13,14 @@ async function HandelServeHomepage(req, res){
     
     if(!firstProductFind){
         payload  = {
-            bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/BannerImage.jpg`,
+            bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/${process.env.BANNER_IMAGE_NAME}`,
             error: "productFindError"
         }
     }
 
     if(firstProductFind){
         payload = {
-            bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/BannerImage.jpg`,
+            bannerimg: `http://${process.env.SERVER_IP}:${process.env.PORT}/homepageServe/${process.env.BANNER_IMAGE_NAME}`,
             user: req.user,
             FirstProductType: firstProductFind,
             SecondProductFind: secondProductFind,
