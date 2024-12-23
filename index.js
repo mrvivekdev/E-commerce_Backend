@@ -10,6 +10,7 @@ const UserRoute = require('./routes/userRoute');
 const HomepageRoute = require('./routes/homepageRoute');
 const ProductRoute = require('./routes/productRoute');
 const CartRoute = require('./routes/cartRoute');
+const SearchRoute = require('./routes/searchRoute');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,6 +34,7 @@ app.use('/api/user', UserRoute);
 app.use('/api/homepage', HomepageRoute);
 app.use('/api/product', ProductRoute);
 app.use('/api/cart', CartRoute);
+app.use('/api/search', SearchRoute);
 
 app.listen(PORT, () => {
     console.log(`Server Started At PORT: ${PORT}`);
