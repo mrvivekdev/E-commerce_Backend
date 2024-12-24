@@ -39,3 +39,5 @@ app.use('/api/search', SearchRoute);
 app.listen(PORT, () => {
     console.log(`Server Started At PORT: ${PORT}`);
 })
+
+// mongodb://127.0.0.1:27017/ECOMDATA
