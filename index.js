@@ -20,7 +20,7 @@ MongoDBConnation(process.env.MONGODB_URL)
     .catch( (error)=>{ return console.log('MongoDB Database Connation error:', error); })
 
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
 }));  
 
