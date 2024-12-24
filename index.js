@@ -20,7 +20,7 @@ MongoDBConnation(process.env.MONGODB_URL)
     .catch( (error)=>{ return console.log('MongoDB Database Connation error:', error); })
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://e-commerce-frontend-ashy-three.vercel.app/',
     methods: ['GET', 'POST'],
 }));  
 
