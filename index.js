@@ -19,11 +19,17 @@ MongoDBConnation(process.env.MONGODB_URL)
     .then( ()=>{ return console.log('MongoDB Connated!') })
     .catch( (error)=>{ return console.log('MongoDB Database Connation error:', error); })
 
+const allowedOrigins = [
+    'http://localhost:5173', 
+    'https://your-production-frontend.vercel.app'
+];
+
 app.use(cors({
-    origin: 'https://e-commerce-frontend-ashy-three.vercel.app',
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
 }));  
-    
+app.options('*', cors());
+
 app.use(express.static(path.join(__dirname, 'public')));    
 app.use(cookieParser());
 app.use(express.json());
