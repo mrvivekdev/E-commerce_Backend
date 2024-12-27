@@ -25,10 +25,9 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: 'https://e-commerce-frontend-ashy-three.vercel.app',
+    origin: 'https://e-commerce-frontend-ashy-three.vercel.app/',
     methods: ['GET', 'POST'],
-}));  
-app.options('*', cors());
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));    
 app.use(cookieParser());
