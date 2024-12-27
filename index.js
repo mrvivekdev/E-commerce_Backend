@@ -25,7 +25,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: 'https://e-commerce-frontend-ashy-three.vercel.app',
     methods: ['GET', 'POST'],
 }));  
 app.options('*', cors());
