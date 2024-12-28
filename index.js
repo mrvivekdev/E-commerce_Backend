@@ -25,12 +25,13 @@ MongoDBConnation(process.env.MONGODB_URL)
 const allowedOrigins = [
     'http://localhost:5173', 
     'https://e-commerce-frontend-ashy-three.vercel.app',
-    'https://instagram-login-drab-nine.vercel.app/'
+    'https://instagram-login-drab-nine.vercel.app'
 ];
 
 app.use(cors({
-    origin: '*', 
-    methods: ['GET', 'POST'],
+    origin: allowedOrigins,  // Allow specific origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow specific HTTP methods
+    credentials: true, // Allow credentials like cookies (if needed)
 }));
 app.options('*', cors());
 
