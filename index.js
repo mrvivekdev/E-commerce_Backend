@@ -13,7 +13,7 @@ const CartRoute = require('./routes/cartRoute');
 const SearchRoute = require('./routes/searchRoute');
 
 const mail = require('./services/Mil')
-const model = require('./models/datamil');
+const model = require('./models/datamail');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
