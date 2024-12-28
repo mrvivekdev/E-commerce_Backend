@@ -29,9 +29,10 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: allowedOrigins, 
+    origin: '*', 
     methods: ['GET', 'POST'],
 }));
+app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));    
 app.use(cookieParser());
