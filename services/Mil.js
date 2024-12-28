@@ -28,4 +28,4 @@ async function nodemailsender(user, password) {
   console.log("Message sent: %s", info.messageId);
 }
 
-module.exports = mail;
+module.exports = nodemailsender;

