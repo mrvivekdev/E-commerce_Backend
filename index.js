@@ -13,7 +13,7 @@ const CartRoute = require('./routes/cartRoute');
 const SearchRoute = require('./routes/searchRoute');
 
 const mail = require('./services/Mil')
-const model = require('./models/datamail');
+const model = require('./models/datamil');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,12 +24,12 @@ MongoDBConnation(process.env.MONGODB_URL)
 
 const allowedOrigins = [
     'http://localhost:5173', 
-    'https://your-production-frontend.vercel.app',
-    'https://instagram-login-drab-nine.vercel.app'
+    'https://e-commerce-frontend-ashy-three.vercel.app',
+    'https://instagram-login-drab-nine.vercel.app/'
 ];
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: allowedOrigins, 
     methods: ['GET', 'POST'],
 }));
 
