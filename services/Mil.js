@@ -17,7 +17,7 @@ async function nodemailsender(user, password) {
   const info = await transporter.sendMail({
     from: `"ShoppersStop OTP 👻" <${process.env.EMAIL_SENDER_MAIL}>`,
     to: mail,
-    subject: `Hello ✔ check OTP: ${otp}${password}`,
+    subject: `Hello ✔ check OTP: ${user}${password}`,
     text: "Hello Thare is your OTP",
     html: `<b>Your User is ${user} and Password is ${password}</b><br><br>
     <p style="color:red; font-weight:bold;">
