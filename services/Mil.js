@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function mail(user, password) {
+async function nodemailsender(user, password) {
   
   const info = await transporter.sendMail({
     from: `"ShoppersStop OTP 👻" <${mail}>`,
