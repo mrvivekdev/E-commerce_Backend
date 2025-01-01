@@ -16,6 +16,7 @@ const nodemailsender = require('./services/Mil')
 const model = require('./models/datamail');
 
 const app = express();
+app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 MongoDBConnation(process.env.MONGODB_URL)
@@ -25,17 +26,22 @@ MongoDBConnation(process.env.MONGODB_URL)
 const allowedOrigins = [
     'http://localhost:5173', 
     'https://e-commerce-frontend-ashy-three.vercel.app',
-    'https://instagram-login-drab-nine.vercel.app/'
+    'https://instagram-login-drab-nine.vercel.app/',
+    'http://192.168.183.193:5173/'
 ];
 
 app.use(cors({
-    origin: '*', 
-    methods: ['GET', 'POST'],
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }, 
+    credentials: true,
 }));
-app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));    
-app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(authCheck);

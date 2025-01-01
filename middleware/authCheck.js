@@ -1,25 +1,27 @@
+
 const {jwtVerify} =  require('../services/authCookie');
 
 function authCheck(req, res, next){
-    const cookieToken = req.cookies.uid;
-    const verifyCookie = jwtVerify(cookieToken);
+    const {cookie} = req.body;
+    const verifyCookie = jwtVerify(cookie);
     
+    console.log("middel",verifyCookie)
     req.user = verifyCookie;
     next();
 }
 
 function authCheckReal(req, res, next){
-    console.log(req.cookies)
-    const cookieToken = req.cookies?.uid;
-    if(!cookieToken){
+    const {cookie} = req.body;
+    if(!cookie){
         console.log('Cookie Error Middleware');
     }
 
-    const verifyCookie = jwtVerify(cookieToken);
-    if(!verifyCookie){
+    const verifyCookie = jwtVerify(cookie);
+    if(!cookie){
         console.log('Cookie Error Middleware');
     }
 
+    req.user = verifyCookie;
     next();
 }
 

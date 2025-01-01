@@ -42,7 +42,6 @@ function jwtVerify(token){
         if(!cookieVerify){
             return null;
         }
-        // req.user = cookieVerify;
         return cookieVerify;
 
     } catch (error) {
